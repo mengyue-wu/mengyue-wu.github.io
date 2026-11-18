@@ -7,482 +7,145 @@
 <title>Mengyue Wu | Digital Mental Health</title>
 <style>
 :root {
+  --navy: #0f172a;
+  --navy-soft: #1e293b;
   --ink: #1e293b;
-  --muted: #64748b;
-  --paper: #ffffff;
-  --subtle-bg: #f8fafc;
-  --blue: #1d4ed8;
-  --blue-soft: #eff6ff;
+  --muted: #475569;
+  --light-muted: #64748b;
+  --paper: #f8fafc;
+  --white: #ffffff;
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --accent: #0d9488;
+  --gold: #d97706;
   --line: #e2e8f0;
-  --max-width: 880px;
+  --shadow-sm: 0 4px 14px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 12px 32px rgba(15, 23, 42, 0.08);
+  --max-width: 1020px;
 }
+
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   line-height: 1.7;
   font-size: 15.5px;
 }
-a { color: var(--blue); text-decoration: none; }
-a:hover { text-decoration: underline; }
+
+a { color: var(--primary); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--primary-dark); text-decoration: underline; }
+
 .wrap { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
 
-/* Header */
-header {
-  padding: 48px 0 28px;
+/* Sticky Glass Navbar */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--line);
-  margin-bottom: 44px;
 }
-h1 {
-  font-size: 28px;
-  margin: 0 0 6px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-.subtitle {
-  font-size: 16px;
-  color: var(--muted);
-  margin: 0 0 14px;
-}
-.meta-row {
+.topbar-inner {
+  height: 64px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px 20px;
-  font-size: 14px;
-  color: var(--muted);
-  margin-bottom: 20px;
+  align-items: center;
+  justify-content: space-between;
 }
-.nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  font-size: 14px;
-  font-weight: 500;
-}
-.nav a { color: var(--ink); }
-.nav a:hover { color: var(--blue); }
-
-/* Sections */
-section { margin-bottom: 52px; }
-h2 {
-  font-size: 20px;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 8px;
-  margin: 0 0 20px;
-  font-weight: 650;
-  letter-spacing: -0.01em;
-}
-h3 {
-  font-size: 16.5px;
-  margin: 28px 0 14px;
-  color: #0f172a;
-  font-weight: 600;
-}
-p { margin: 0 0 14px; color: #334155; }
-
-/* News */
-.news-list { list-style: none; padding: 0; margin: 0; }
-.news-item {
-  display: flex;
-  gap: 16px;
-  margin-bottom: 11px;
-  font-size: 14.5px;
-}
-.news-date {
-  color: var(--muted);
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 13.5px;
-  white-space: nowrap;
-  padding-top: 2px;
-}
-
-/* Research Pillars */
-.pillar-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-  margin-top: 16px;
-}
-.pillar-card {
-  background: var(--subtle-bg);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 18px 20px;
-}
-.pillar-card h4 {
-  margin: 0 0 6px;
-  font-size: 15.5px;
-  color: var(--ink);
-}
-.pillar-card p {
-  margin: 0;
-  font-size: 14px;
-  color: var(--muted);
-}
-
-/* Publications */
-.pub-item { margin-bottom: 20px; }
-.pub-title {
-  font-weight: 600;
-  color: var(--ink);
-  display: block;
-  margin-bottom: 3px;
+.brand {
+  font-weight: 750;
   font-size: 15px;
+  letter-spacing: -0.01em;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-.pub-authors { font-size: 14px; color: var(--muted); margin-bottom: 2px; }
-.pub-venue { font-size: 14px; color: #1e40af; font-style: italic; margin-bottom: 6px; }
-.pub-links { font-size: 13px; display: flex; gap: 12px; }
-.bibtex-box {
-  display: none;
-  background: var(--subtle-bg);
-  padding: 12px;
-  border-radius: 6px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 12px;
-  margin-top: 8px;
-  white-space: pre-wrap;
-  border: 1px solid var(--line);
-  overflow-x: auto;
+.brand-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
 }
+.nav { display: flex; gap: 24px; font-size: 14px; font-weight: 550; }
+.nav a { color: var(--muted); text-decoration: none; }
+.nav a:hover { color: var(--primary); }
 
-/* Lists */
-ul.clean-list { padding-left: 18px; margin: 0; color: #334155; font-size: 14.5px; }
-ul.clean-list li { margin-bottom: 8px; }
-
-footer {
-  border-top: 1px solid var(--line);
-  padding: 28px 0 40px;
-  text-align: center;
-  font-size: 13px;
-  color: var(--muted);
-  margin-top: 64px;
+/* Hero Banner (No Profile Pic, Rich Typographic & Visual Focus) */
+.hero {
+  background: linear-gradient(135deg, #0f172a 0%, #172554 55%, #1e1b4b 100%);
+  color: var(--white);
+  padding: 64px 0 60px;
+  position: relative;
+  overflow: hidden;
 }
-
-@media (max-width: 600px) {
-  h1 { font-size: 24px; }
-  .news-item { flex-direction: column; gap: 2px; }
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.14) 0%, transparent 70%);
+  top: -160px;
+  right: -100px;
+  pointer-events: none;
 }
-</style>
-</head>
-<body>
-
-<header>
-  <div class="wrap">
-    <h1>Mengyue Wu (吴梦玥)</h1>
-    <div class="subtitle">Associate Professor &amp; Ph.D. Supervisor · School of Computer Science, Shanghai Jiao Tong University</div>
-    <div class="meta-row">
-      <span>Digital Mental Health</span>
-      <span>·</span>
-      <span>X-LANCE Lab</span>
-      <span>·</span>
-      <a href="mailto:mengyuewu@sjtu.edu.cn">mengyuewu@sjtu.edu.cn</a>
-      <span>·</span>
-      <a href="https://scholar.google.com/citations?user=9cvRM5wAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
-      <span>·</span>
-      <a href="https://www.cs.sjtu.edu.cn/jiaoshiml/wumengyue.html" target="_blank" rel="noopener">SJTU Faculty Page</a>
-    </div>
-    <nav class="nav">
-      <a href="#about">About</a>
-      <a href="#news">News</a>
-      <a href="#research">Research</a>
-      <a href="#publications">Publications</a>
-      <a href="#service">Service &amp; Awards</a>
-      <a href="#teaching">Teaching</a>
-    </nav>
-  </div>
-</header>
-
-<main class="wrap">
-
-  <section id="about">
-    <h2>About</h2>
-    <p>I am an Associate Professor and Ph.D. Supervisor in the School of Computer Science at Shanghai Jiao Tong University (SJTU), and a faculty member of the X-LANCE Lab. I received my B.Sc./B.A. from Beijing Normal University and my Ph.D. from the University of Melbourne.</p>
-    <p>My research centers on <strong>Digital Mental Health</strong>—uncovering the computational principles underlying human mental states through speech, language, and clinical interaction, and building clinically grounded, trustworthy AI systems for mental healthcare.</p>
-  </section>
-
-  <section id="news">
-    <h2>Recent News</h2>
-    <ul class="news-list">
-      <li class="news-item">
-        <span class="news-date">[2026.11]</span>
-        <span>Chaired and delivered the opening talk at the ISCSLP 2026 Special Session in Penang, Malaysia.</span>
-      </li>
-      <li class="news-item">
-        <span class="news-date">[2026.10]</span>
-        <span>Released <em>Situating Vulnerability: An Ethical Governance Framework for Anthropomorphic AI Interaction</em>.</span>
-      </li>
-      <li class="news-item">
-        <span class="news-date">[2026.09]</span>
-        <span><em>MATCHA: A Chinese Multi-Disorder Mental Health Dataset with Cross-Lingual Analyses on Social Media</em> accepted to Findings of EMNLP 2026.</span>
-      </li>
-      <li class="news-item">
-        <span class="news-date">[2026.07]</span>
-        <span><em>Semi-Supervised Diseased Detection from Speech Dialogues with Multi-Level Data Modeling</em> published in Findings of ACL 2026.</span>
-      </li>
-      <li class="news-item">
-        <span class="news-date">[2026.05]</span>
-        <span>Survey &amp; position work on <em>Towards High-Level Semantic Intelligence</em> and <em>Emotional intelligence in large language models is fragmented across perception, cognition, and interaction</em> released on arXiv.</span>
-      </li>
-      <li class="news-item">
-        <span class="news-date">[2026.04]</span>
-        <span><em>PsyEval: A Comprehensive Large Language Model Evaluation Benchmark for Mental Health</em> published in <em>npj Mental Health Research</em>, and <em>From Medical Records to Diagnostic Dialogues</em> presented at ICLR 2026.</span>
-      </li>
-    </ul>
-  </section>
-
-  <section id="research">
-    <h2>Research Directions · Digital Mental Health</h2>
-    <div class="pillar-grid">
-      <div class="pillar-card">
-        <h4>1. Computational Mental State Representation</h4>
-        <p>Developing interpretable computational representations of latent mental states from speech and language—progressing from binary disease labels to clinically grounded narratives, symptom modeling (PsySym), stressful life event tracking (PsyEvent), and cognitive markers for dementia screening.</p>
-      </div>
-      <div class="pillar-card">
-        <h4>2. Clinical AI &amp; Mental State Reasoning</h4>
-        <p>Designing clinically grounded dialogue systems that actively infer mental states through structured diagnostic interviewing (SCID protocols), psychiatric comorbidity modeling, patient simulation, and longitudinal causal reasoning.</p>
-      </div>
-      <div class="pillar-card">
-        <h4>3. Trustworthy AI for Mental Health</h4>
-        <p>Advancing ethical alignment, psychological intelligence evaluation (PsyEval, MedEthicEval), vulnerability governance in anthropomorphic AI, and safe clinical deployment.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="publications">
-    <h2>Selected Publications</h2>
-
-    <h3>Computational Mental State Representation</h3>
-
-    <div class="pub-item">
-      <span class="pub-title">MATCHA: A Chinese Multi-Disorder Mental Health Dataset with Cross-Lingual Analyses on Social Media</span>
-      <div class="pub-authors">Mengyue Wu, et al.</div>
-      <div class="pub-venue">Findings of the Association for Computational Linguistics: EMNLP 2026</div>
-      <div class="pub-links">
-        <a href="javascript:void(0)" onclick="toggleBib('bib-matcha')">[BibTeX]</a>
-      </div>
-      <div id="bib-matcha" class="bibtex-box">@inproceedings{wu2026matcha,
-  title={MATCHA: A Chinese Multi-Disorder Mental Health Dataset with Cross-Lingual Analyses on Social Media},
-  author={Wu, Mengyue and others},
-  booktitle={Findings of EMNLP},
-  year={2026}
-}</div>
-    </div>
-
-    <div class="pub-item">
-      <span class="pub-title">Clustering and Switching Patterns in Semantic Verbal Fluency among Chinese Older Adults: Associations with Cognitive Function and Dementia Screening</span>
-      <div class="pub-authors">Juqiang Chen, et al., Mengyue Wu</div>
-      <div class="pub-venue">npj Dementia, 2026</div>
-      <div class="pub-links">
-        <a href="https://www.nature.com/articles/s44400-026-00113-8" target="_blank" rel="noopener">[Paper]</a>
-        <a href="javascript:void(0)" onclick="toggleBib('bib-npjdementia')">[BibTeX]</a>
-      </div>
-      <div id="bib-npjdementia" class="bibtex-box">@article{chen2026clustering,
-  title={Clustering and Switching Patterns in Semantic Verbal Fluency among Chinese Older Adults: Associations with Cognitive Function and Dementia Screening},
-  author={Chen, Juqiang and others and Wu, Mengyue},
-  journal={npj Dementia},
-  year={2026}
-}</div>
-    </div>
-
-    <div class="pub-item">
-      <span class="pub-title">Semi-Supervised Diseased Detection from Speech Dialogues with Multi-Level Data Modeling</span>
-      <div class="pub-authors">Xingyuan Li, Mengyue Wu</div>
-      <div class="pub-venue">Findings of the Association for Computational Linguistics: ACL 2026</div>
-      <div class="pub-links">
-        <a href="https://aclanthology.org/2026.findings-acl.1194/" target="_blank" rel="noopener">[ACL Anthology]</a>
-        <a href="javascript:void(0)" onclick="toggleBib('bib-acl26')">[BibTeX]</a>
-      </div>
-      <div id="bib-acl26" class="bibtex-box">@inproceedings{li2026semi,
-  title={Semi-Supervised Diseased Detection from Speech Dialogues with Multi-Level Data Modeling},
-  author={Li, Xingyuan and Wu, Mengyue},
-  booktitle={Findings of ACL},
-  pages={23851--23862},
-  year={2026}
-}</div>
-    </div>
-
-    <div class="pub-item">
-      <span class="pub-title">Audio Multi-Feature Fusion Detection for Depression Based on Graph Convolutional Networks</span>
-      <div class="pub-authors">Guangsheng Luo, et al., Mengyue Wu</div>
-      <div class="pub-venue">Annals of the New York Academy of Sciences, 2025</div>
-      <div class="pub-links">
-        <a href="https://pubmed.ncbi.nlm.nih.gov/40692179/" target="_blank" rel="noopener">[PubMed]</a>
-        <a href="javascript:void(0)" onclick="toggleBib('bib-nyas')">[BibTeX]</a>
-      </div>
-      <div id="bib-nyas" class="bibtex-box">@article{luo2025audio,
-  title={Audio multi-feature fusion detection for depression based on graph convolutional networks},
-  author={Luo, Guangsheng and others and Wu, Mengyue},
-  journal={Annals of the New York Academy of Sciences},
-  volume={1550},
-  number={1},
-  pages={309--320},
-  year={2025}
-}</div>
-    </div>
-
-    <div class="pub-item">
-      <span class="pub-title">Symptom Identification for Interpretable Detection of Multiple Mental Disorders on Social Media</span>
-      <div class="pub-authors">Zhiling Zhang, Siyuan Chen, Mengyue Wu, Kenny Q. Zhu</div>
-      <div class="pub-venue">Proceedings of EMNLP 2022</div>
-      <div class="pub-links">
-        <a href="https://aclanthology.org/2022.emnlp-main.677/" target="_blank" rel="noopener">[ACL Anthology]</a>
-        <a href="javascript:void(0)" onclick="toggleBib('bib-psysym')">[BibTeX]</a>
-      </div>
-      <div id="bib-psysym" class="bibtex-box">@inproceedings{zhang2022symptom,
-  title={Symptom Identification for Interpretable Detection of Multiple Mental Disorders on Social Media},
-  author={Zhang, Zhiling and Chen, Siyuan and Wu, Mengyue and Zhu, Kenny Q},
-  booktitle={EMNLP},
-  pages={9970--9985},
-  year={2022}
-}</div>
-    </div>
-
-    <div class="pub-item">
-      <span class="pub-title">DEPA: Self-Supervised Audio Embedding for Depression Detection</span>
-      <div class="pub-authors">Pingyue Zhang, Mengyue Wu, Heinrich Dinkel, Kai Yu</div>
-      <div class="pub-venue">Proceedings of ACM Multimedia (MM), 2021</div>
-      <div class="pub-links">
-        <a href="https://doi.org/10.1145/3474085.3479236" target="_blank" rel="noopener">[DOI]</a>
-        <a href="javascript:void(0)" onclick="toggleBib('bib-depa')">[BibTeX]</a>
-      </div>
-      <div id="bib-depa" class="bibtex-box">@inproceedings{zhang2021depa,
-  title={DEPA: Self-Supervised Audio Embedding for Depression Detection},
-  author={Zhang, Pingyue and Wu, Mengyue and Dinkel, Heinrich and Yu, Kai},
-  booktitle={ACM MM},
-  pages={135--143},
-  year={2021}
-}</div>
-    </div>
-
-    <h3>Clinical AI &amp; Mental State Reasoning</h3>
-
-    <div class="pub-item">
-      <span class="pub-title">From Medical Records to Diagnostic Dialogues: A Clinical-Grounded Approach and Dataset for Psychiatric Comorbidity</span>
-      <div class="pub-authors">Tianxi Wan, et al., Mengyue Wu</div>
-      <div class="pub-venue">International Conference on Learning Representations (ICLR), 2026</div>
-      <div class="pub-links">
-        <a href="https://proceedings.iclr.cc/paper_files/paper/2026/file/56ed47cd02620a0ea7f3079eb2f9b12a-Paper-Conference.pdf" target="_blank" rel="noopener">[PDF]</a>
-        <a href="javascript:void(0)" onclick="toggleBib('bib-iclr26')">[BibTeX]</a>
-      </div>
-      <div id="bib-iclr26" class="bibtex-box">@inproceedings{wan2026medical,
-  title={From Medical Records to Diagnostic Dialogues: A Clinical-Grounded Approach and Dataset for Psychiatric Comorbidity},
-  author={Wan, Tianxi and others and Wu, Mengyue},
-  booktitle={ICLR},
-  pages={53029--53057},
-  year={2026}
-}</div>
-    </div>
-
-    <div class="pub-item">
-      <span class="pub-title">Tracking Life's Ups and Downs: Mining Life Events from Social Media Posts for Mental Health Analysis</span>
-      <div class="pub-authors">Minghao Lv, et al., Mengyue Wu</div>
-      <div class="pub-venue">Proceedings of ACL 2025 (Long Papers)</div>
-      <div class="pub-links">
-        <a href="javascript:void(0)" onclick="toggleBib('bib-acl25')">[BibTeX]</a>
-      </div>
-      <div id="bib-acl25" class="bibtex-box">@inproceedings{lv2025tracking,
-  title={Tracking life's ups and downs: Mining life events from social media posts for mental health analysis},
-  author={Lv, Minghao and others and Wu, Mengyue},
-  booktitle={ACL},
-  pages={6950--6965},
-  year={2025}
-}</div>
-    </div>
-
-    <div class="pub-item">
-      <span class="pub-title">Mapping Long-Term Causalities in Psychiatric Symptomatology and Life Events from Social Media</span>
-      <div class="pub-authors">Siyuan Chen, Meilin Wang, et al., Mengyue Wu</div>
-      <div class="pub-venue">Proceedings of NAACL-HLT 2024 (Long Papers)</div>
-      <div class="pub-links">
-        <a href="javascript:void(0)" onclick="toggleBib('bib-naacl24')">[BibTeX]</a>
-      </div>
-      <div id="bib-naacl24" class="bibtex-box">@inproceedings{chen2024mapping,
-  title={Mapping long-term causalities in psychiatric symptomatology and life events from social media},
-  author={Chen, Siyuan and Wang, Meilin and others and Wu, Mengyue},
-  booktitle={NAACL-HLT},
-  pages={5472--5487},
-  year={2024}
-}</div>
-    </div>
-
-    <div class="pub-item">
-      <span class="pub-title">Detection of Multiple Mental Disorders from Social Media with Two-Stream Psychiatric Experts</span>
-      <div class="pub-authors">Siyuan Chen, Zhiling Zhang, Mengyue Wu, Kenny Q. Zhu</div>
-      <div class="pub-venue">Proceedings of EMNLP 2023</div>
-      <div class="pub-links">
-        <a href="https://aclanthology.org/2023.emnlp-main.562/" target="_blank" rel="noopener">[ACL Anthology]</a>
-        <a href="javascript:void(0)" onclick="toggleBib('bib-psyex')">[BibTeX]</a>
-      </div>
-      <div id="bib-psyex" class="bibtex-box">@inproceedings{chen2023detection,
-  title={Detection of Multiple Mental Disorders from Social Media with Two-Stream Psychiatric Experts},
-  author={Chen, Siyuan and Zhang, Zhiling and Wu, Mengyue and Zhu, Kenny Q},
-  booktitle={EMNLP},
-  pages={9071--9084},
-  year={2023}
-}</div>
-    </div>
-
-    <div class="pub-item">
-      <span class="pub-title">D4: A Chinese Dialogue Dataset for Depression-Diagnosis-Oriented Chat</span>
-      <div class="pub-authors">Binwei Yao, Chao Shi, Likai Zou, Lingfeng Dai, Mengyue Wu, Lu Chen, Zhen Wang, Kai Yu</div>
-      <div class="pub-venue">Proceedings of EMNLP 2022</div>
-      <div class="pub-links">
-        <a href="javascript:void(0)" onclick="toggleBib('bib-d4')">[BibTeX]</a>
-      </div>
-      <div id="bib-d4" class="bibtex-box">@inproceedings{yao2022d4,
-  title={D4: A Chinese Dialogue Dataset for Depression-Diagnosis-Oriented Chat},
-  author={Yao, Binwei and Shi, Chao and Zou, Likai and Dai, Lingfeng and Wu, Mengyue and Chen, Lu and Wang, Zhen and Yu, Kai},
-  booktitle={EMNLP},
-  pages={2438--2459},
-  year={2022}
-}</div>
-    </div>
-
-    <h3>Trustworthy Mental AI</h3>
-
-    <div class="pub-item">
-      <span class="pub-title">Situating Vulnerability: An Ethical Governance Framework for Anthropomorphic AI Interaction</span>
-      <div class="pub-authors">Mengyue Wu, et al.</div>
-      <div class="pub-venue">Preprint / Working Paper, 2026</div>
-      <div class="pub-links">
-        <a href="javascript:void(0)" onclick="toggleBib('bib-vuln')">[BibTeX]</a>
-      </div>
-      <div id="bib-vuln" class="bibtex-box">@article{wu2026situating,
-  title={Situating Vulnerability: An Ethical Governance Framework for Anthropomorphic AI Interaction},
-  author={Wu, Mengyue and others},
-  year={2026}
-}</div>
-    </div>
-
-    <div class="pub-item">
-      <span class="pub-title">PsyEval: A Comprehensive Large Language Model Evaluation Benchmark for Mental Health</span>
-      <div class="pub-authors">Haoan Jin, Siyuan Chen, et al., Mengyue Wu</div>
-      <div class="pub-venue">npj Mental Health Research, 2026</div>
-      <div class="pub-links">
-        <a href="https://www.nature.com/articles/s44184-026-00227-0" target="_blank" rel="noopener">[Nature]</a>
-        <a href="javascript:void(0)" onclick="toggleBib('bib-psyeval')">[BibTeX]</a>
-      </div>
-      <div id="bib-psyeval" class="bibtex-box">@article{jin2026psyeval,
-  title={PsyEval: A Comprehensive Large Language Model Evaluation Benchmark for Mental Health},
-  author={Jin, Haoan and Chen, Siyuan and others and Wu, Mengyue},
-  journal={npj Mental Health Research},
-  year={2026}
-}</div>
-    </div>
-
-    <div class="pub-item">
-      <span class="pub-title">A Human-Centric Pipeline for Aligning Large Language Models with Chinese Medical Ethics</span>
-      <div class="pub-authors">Haoan Jin, Han Ying, et al., Mengyue Wu</div>
-      <div class="pub-venue">Proceedings of the AAAI Conference on Artificial Intelligence (AAAI), 2026</div>
-      <div class="pub-links">
-        <a href="javascript:void(0)" onclick="toggleBib('bib-aaai26')">[BibTeX]</a>
-      </div>
-      <div id="bib-aaai26" class="bibtex-box">@inproceedings{jin2026human,
-  title={A Human-Centric Pipeline for Aligning Large Language Models with Chinese Medical Ethics},
-  author={Jin, Haoan and Ying, Han and others and Wu, Mengyue},
-  booktitle={AAAI},
-  pages={38679--38687},
-  year={2026
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.85fr;
+  gap: 40px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 5px 13px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #bae6fd;
+  letter-spacing: 0.03em;
+  margin-bottom: 18px;
+}
+.hero h1 {
+  font-size: 38px;
+  line-height: 1.18;
+  margin: 0 0 10px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+.hero h1 span {
+  font-weight: 400;
+  color: #94a3b8;
+  font-size: 26px;
+  margin-left: 8px;
+}
+.hero-role {
+  font-size: 16.5px;
+  color: #cbd5e1;
+  margin-bottom: 18px;
+}
+.hero-vision {
+  font-size: 15px;
+  color: #e2e8f0;
+  line-height: 1.75;
+  border-left: 3px solid #38bdf8;
+  padding-left: 16px;
+  margin-bottom: 24px;
+}
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.btn-pill {
+  display: inline-flex;
+  align-items: center
