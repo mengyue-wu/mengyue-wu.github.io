@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN" data-lang="zh">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Mengyue Wu - Digital Mental Health, Computational Mental State Modeling, and Trustworthy AI">
-<title>Mengyue Wu | Digital Mental Health</title>
+<meta name="description" content="Mengyue Wu - Digital Mental Health, Computational Mental State Modeling, Trustworthy AI, and Affective Music Generation">
+<title>Mengyue Wu | Digital Mental Health & World Modeling</title>
 <style>
 :root {
   --navy: #0b1120;
@@ -46,7 +46,7 @@ a:hover { color: #1d4ed8; text-decoration: underline; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(226, 232, 240, 0.8);
 }
@@ -61,24 +61,43 @@ a:hover { color: #1d4ed8; text-decoration: underline; }
   align-items: center;
   gap: 10px;
   font-weight: 800;
-  font-size: 15px;
+  font-size: 14.5px;
   color: var(--navy);
   letter-spacing: -0.01em;
 }
 .brand-badge {
   background: linear-gradient(135deg, #2563eb, #0d9488);
   color: white;
-  font-size: 11px;
+  font-size: 10.5px;
   padding: 3px 8px;
   border-radius: 6px;
   font-weight: 700;
   letter-spacing: 0.04em;
 }
-.nav { display: flex; gap: 24px; font-size: 14px; font-weight: 600; }
+.nav-container { display: flex; align-items: center; gap: 20px; }
+.nav { display: flex; gap: 20px; font-size: 13.5px; font-weight: 600; }
 .nav a { color: var(--muted); text-decoration: none; }
 .nav a:hover { color: var(--primary); }
 
-/* Fancy Hero Section (No Profile Pic, Visual Architecture Focus) */
+/* Language Switcher Button */
+.lang-btn {
+  background: #e2e8f0;
+  border: none;
+  color: var(--navy);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.lang-btn:hover { background: var(--primary); color: white; }
+
+/* Language Switch Control Core */
+[data-lang="en"] .lang-zh { display: none !important; }
+[data-lang="zh"] .lang-en { display: none !important; }
+
+/* Hero Section */
 .hero {
   background: radial-gradient(circle at 85% 20%, rgba(37, 99, 235, 0.28) 0%, transparent 45%),
               radial-gradient(circle at 15% 80%, rgba(13, 148, 136, 0.22) 0%, transparent 45%),
@@ -96,7 +115,7 @@ a:hover { color: #1d4ed8; text-decoration: underline; }
 }
 .hero-kicker {
   display: inline-block;
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -108,7 +127,7 @@ a:hover { color: #1d4ed8; text-decoration: underline; }
   margin-bottom: 16px;
 }
 .hero h1 {
-  font-size: 40px;
+  font-size: 38px;
   margin: 0 0 8px;
   font-weight: 800;
   letter-spacing: -0.025em;
@@ -117,21 +136,21 @@ a:hover { color: #1d4ed8; text-decoration: underline; }
 .hero h1 span {
   font-weight: 400;
   color: #94a3b8;
-  font-size: 26px;
+  font-size: 24px;
   margin-left: 8px;
 }
 .hero-affil {
-  font-size: 16px;
+  font-size: 15.5px;
   color: #cbd5e1;
   margin-bottom: 18px;
 }
 .hero-quote {
-  font-size: 15px;
+  font-size: 14.5px;
   color: #e2e8f0;
   line-height: 1.75;
   border-left: 3px solid #38bdf8;
   padding-left: 16px;
-  margin-bottom: 26px;
+  margin-bottom: 24px;
 }
 .hero-actions {
   display: flex;
@@ -164,7 +183,7 @@ a:hover { color: #1d4ed8; text-decoration: underline; }
 
 /* Hero Visual Card */
 .hero-visual-box {
-  background: rgba(15, 23, 42, 0.65);
+  background: rgba(15, 23, 42, 0.7);
   border: 1px solid rgba(148, 163, 184, 0.25);
   border-radius: 18px;
   padding: 20px;
@@ -172,7 +191,7 @@ a:hover { color: #1d4ed8; text-decoration: underline; }
   backdrop-filter: blur(10px);
 }
 .hero-visual-title {
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -184,11 +203,9 @@ a:hover { color: #1d4ed8; text-decoration: underline; }
 
 /* Section Headers */
 section { padding: 60px 0 8px; }
-.sec-header {
-  margin-bottom: 28px;
-}
+.sec-header { margin-bottom: 28px; }
 .sec-eyebrow {
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -203,7 +220,7 @@ section { padding: 60px 0 8px; }
   letter-spacing: -0.02em;
 }
 
-/* Cards */
+/* Surface Cards */
 .surface-card {
   background: var(--white);
   border: 1px solid var(--line);
@@ -213,11 +230,7 @@ section { padding: 60px 0 8px; }
 }
 
 /* News Feed */
-.news-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-}
+.news-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
 .news-row {
   display: flex;
   align-items: baseline;
@@ -236,7 +249,7 @@ section { padding: 60px 0 8px; }
   white-space: nowrap;
 }
 
-/* Fancy Research Direction Cards with Large Framework Diagrams */
+/* Research Framework Cards */
 .research-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -252,10 +265,7 @@ section { padding: 60px 0 8px; }
   flex-direction: column;
   transition: transform 0.25s, box-shadow 0.25s;
 }
-.res-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
+.res-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
 .res-diagram-wrap {
   background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
   border-bottom: 1px solid var(--line);
@@ -270,12 +280,7 @@ section { padding: 60px 0 8px; }
   text-align: center;
   margin-top: 6px;
 }
-.res-content {
-  padding: 24px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
+.res-content { padding: 24px; flex: 1; display: flex; flex-direction: column; }
 .res-tag {
   display: inline-block;
   width: fit-content;
@@ -291,34 +296,50 @@ section { padding: 60px 0 8px; }
 .tag-teal { background: #ccfbf1; color: #115e59; }
 .tag-indigo { background: #e0e7ff; color: #3730a3; }
 .tag-amber { background: #fef3c7; color: #92400e; }
+.tag-purple { background: #f3e8ff; color: #6b21a8; }
 
-.res-content h3 {
-  font-size: 18.5px;
-  margin: 0 0 10px;
-  color: var(--navy);
-  line-height: 1.35;
-}
-.res-content p {
-  font-size: 14px;
-  color: var(--muted);
-  margin: 0 0 16px;
-  flex: 1;
-}
-.res-papers {
-  padding-top: 12px;
-  border-top: 1px dashed var(--line);
-  font-size: 12.5px;
-  color: var(--navy-mid);
-}
+.res-content h3 { font-size: 18px; margin: 0 0 10px; color: var(--navy); line-height: 1.35; }
+.res-content p { font-size: 14px; color: var(--muted); margin: 0 0 16px; flex: 1; }
+.res-papers { padding-top: 12px; border-top: 1px dashed var(--line); font-size: 12.5px; color: var(--navy-mid); }
 .res-papers strong { color: var(--primary); }
 
-/* Publications Filter & Cards */
-.filter-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 22px;
+/* Music Emotion & Generation Section */
+.music-hero {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 28px;
+  align-items: center;
+  padding: 30px;
+  border-radius: 19px;
+  background: linear-gradient(120deg, #172f50, #315a7b);
+  color: #fff;
+  margin-bottom: 24px;
 }
+.music-label { font-size: 10.5px; letter-spacing: 0.16em; color: #a8c9e6; font-weight: 850; text-transform: uppercase; }
+.music-hero h3 { font-size: 24px; line-height: 1.35; margin: 10px 0; }
+.music-hero p { font-size: 13.5px; line-height: 1.8; color: #d1dfed; margin: 0; }
+.va-plot { padding: 10px 10px 5px 28px; position: relative; }
+.va-y { position: absolute; left: 0; top: 38%; writing-mode: vertical-rl; transform: rotate(180deg); font-size: 10px; color: #c9daeb; }
+.va-quadrants { height: 180px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; border: 1px solid rgba(255,255,255,.5); border-radius: 10px; overflow: hidden; }
+.q { display: flex; align-items: center; justify-content: center; text-align: center; padding: 6px; font-size: 11px; font-weight: 750; border: 1px solid rgba(255,255,255,.15); }
+.q1 { background: rgba(81,166,142,.45); } .q2 { background: rgba(210,123,108,.4); }
+.q3 { background: rgba(111,119,164,.45); } .q4 { background: rgba(100,151,196,.45); }
+.va-x { text-align: center; font-size: 10px; color: #c9daeb; margin-top: 8px; }
+
+.music-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 24px; }
+.music-metric-card { padding: 18px; border: 1px solid var(--line); border-radius: 14px; background: #fff; text-align: center; box-shadow: var(--shadow-sm); }
+.music-metric-card strong { display: block; font-size: 26px; color: var(--primary); letter-spacing: -0.03em; }
+.music-metric-card span { font-size: 12px; color: var(--muted); }
+
+.music-loop { margin-top: 20px; padding: 22px; border-radius: 15px; background: #edf4f5; border: 1px solid #d7e7e4; }
+.music-loop > b { font-size: 15px; color: var(--navy); display: block; margin-bottom: 12px; }
+.music-steps { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 14px 0; }
+.music-steps span { flex: 1; text-align: center; padding: 12px 8px; border-radius: 9px; background: white; font-size: 11.5px; font-weight: 750; color: #315f5a; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+.music-steps i { font-style: normal; color: #478d80; font-weight: bold; }
+.music-loop p { font-size: 12.5px; color: #526c68; margin: 0; line-height: 1.7; }
+
+/* Publications Filter & Cards */
+.filter-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
 .tab-btn {
   border: 1px solid var(--line);
   background: var(--white);
@@ -331,11 +352,7 @@ section { padding: 60px 0 8px; }
   transition: all 0.15s;
 }
 .tab-btn:hover { border-color: var(--primary); color: var(--primary); }
-.tab-btn.active {
-  background: var(--navy);
-  color: var(--white);
-  border-color: var(--navy);
-}
+.tab-btn.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
 
 .pub-stack { display: flex; flex-direction: column; gap: 14px; }
 .pub-card {
@@ -347,34 +364,11 @@ section { padding: 60px 0 8px; }
   transition: border-color 0.2s;
 }
 .pub-card:hover { border-color: #93c5fd; }
-.pub-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 14px;
-}
-.pub-title {
-  font-weight: 700;
-  font-size: 15.5px;
-  color: var(--navy);
-  margin-bottom: 4px;
-}
-.pub-pill {
-  font-size: 11px;
-  font-weight: 700;
-  padding: 3px 9px;
-  border-radius: 6px;
-  background: #f1f5f9;
-  color: #334155;
-  white-space: nowrap;
-}
+.pub-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; }
+.pub-title { font-weight: 700; font-size: 15.5px; color: var(--navy); margin-bottom: 4px; }
+.pub-pill { font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 6px; background: #f1f5f9; color: #334155; white-space: nowrap; }
 .pub-authors { font-size: 14px; color: var(--muted); margin-bottom: 4px; }
-.pub-venue {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--primary);
-  margin-bottom: 10px;
-}
+.pub-venue { font-size: 14px; font-weight: 600; color: var(--primary); margin-bottom: 10px; }
 .pub-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .action-chip {
   font-size: 12.5px;
@@ -386,11 +380,7 @@ section { padding: 60px 0 8px; }
   color: var(--navy);
   text-decoration: none !important;
 }
-.action-chip:hover {
-  background: var(--primary-soft);
-  border-color: #bfdbfe;
-  color: var(--primary);
-}
+.action-chip:hover { background: var(--primary-soft); border-color: #bfdbfe; color: var(--primary); }
 .bibtex-box {
   display: none;
   background: #0f172a;
@@ -404,14 +394,14 @@ section { padding: 60px 0 8px; }
   overflow-x: auto;
 }
 
-/* Bottom Two-Column Grid */
-.bottom-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
+/* Bottom Grid & Partners */
+.bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .clean-list { padding-left: 18px; margin: 0; font-size: 14.5px; color: #334155; }
 .clean-list li { margin-bottom: 10px; }
+.partner-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.partner { min-height: 90px; padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: white; display: flex; flex-direction: column; justify-content: center; gap: 4px; }
+.partner small { font-size: 10px; color: var(--primary); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.partner b { font-size: 13.5px; color: var(--navy); }
 
 footer {
   margin-top: 72px;
@@ -427,6 +417,9 @@ footer strong { color: #ffffff; }
   .hero-grid { grid-template-columns: 1fr; }
   .research-grid { grid-template-columns: 1fr; }
   .bottom-grid { grid-template-columns: 1fr; }
+  .music-hero { grid-template-columns: 1fr; }
+  .music-metrics { grid-template-columns: repeat(2, 1fr); }
+  .partner-grid { grid-template-columns: repeat(2, 1fr); }
   .hero h1 { font-size: 32px; }
 }
 </style>
@@ -436,27 +429,37 @@ footer strong { color: #ffffff; }
 <header class="topbar">
   <div class="wrap topbar-inner">
     <div class="brand">
-      <span>Mengyue Wu</span>
-      <span class="brand-badge">DIGITAL MENTAL HEALTH</span>
+      <span>Mengyue Wu · 吴梦玥</span>
+      <span class="brand-badge">MENTAL HEALTH WORLD MODELING</span>
     </div>
-    <nav class="nav">
-      <a href="#about">About</a>
-      <a href="#news">News</a>
-      <a href="#research">Research Frameworks</a>
-      <a href="#publications">Publications</a>
-      <a href="#honors">Honors &amp; Teaching</a>
-    </nav>
+    <div class="nav-container">
+      <nav class="nav">
+        <a href="#about"><span class="lang-zh">简介</span><span class="lang-en">About</span></a>
+        <a href="#research"><span class="lang-zh">研究框架</span><span class="lang-en">Frameworks</span></a>
+        <a href="#music"><span class="lang-zh">音乐与情感</span><span class="lang-en">Music</span></a>
+        <a href="#publications"><span class="lang-zh">论文代表作</span><span class="lang-en">Publications</span></a>
+        <a href="#partners"><span class="lang-zh">合作伙伴</span><span class="lang-en">Partners</span></a>
+      </nav>
+      <button class="lang-btn" id="langToggleBtn" onclick="toggleLanguage()">中 / EN</button>
+    </div>
   </div>
 </header>
 
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="hero-kicker">Computational Mental Science · SJTU X-LANCE Lab</div>
+      <div class="hero-kicker">
+        <span class="lang-zh">上海交通大学 计算机科学与工程系 · X-LANCE 实验室</span>
+        <span class="lang-en">Shanghai Jiao Tong University · X-LANCE Lab</span>
+      </div>
       <h1>Mengyue Wu <span>吴梦玥</span></h1>
-      <div class="hero-affil">Associate Professor &amp; Ph.D. Supervisor · School of Computer Science, Shanghai Jiao Tong University</div>
+      <div class="hero-affil">
+        <span class="lang-zh">副教授、博士生导师 · 计算机科学与工程系</span>
+        <span class="lang-en">Associate Professor &amp; Ph.D. Supervisor · School of Computer Science</span>
+      </div>
       <p class="hero-quote">
-        Uncovering the computational principles underlying human mental states through speech, language, and clinical interaction—building AI systems that not only understand us, but deepen our scientific understanding of ourselves.
+        <span class="lang-zh">让模型不止听懂人说了什么，也能从持续交流与生理监测中理解、表征并解释人的心理状态。构建兼具科学严谨性与临床真实应用价值的“心理健康世界模型”。</span>
+        <span class="lang-en">Building computational models that go beyond understanding text—inferring, representing, and explaining human mental states through continuous dialogue and physiological signals.</span>
       </p>
       <div class="hero-actions">
         <a class="btn btn-glow" href="mailto:mengyuewu@sjtu.edu.cn">✉️ mengyuewu@sjtu.edu.cn</a>
@@ -468,7 +471,7 @@ footer strong { color: #ffffff; }
     <!-- Hero Visual: Mental Health World Modeling Diagram -->
     <div class="hero-visual-box">
       <div class="hero-visual-title">
-        <span>Mental Health World Modeling</span>
+        <span>Mental Health World Model</span>
         <span style="color:#38bdf8;">Closed-Loop Paradigm</span>
       </div>
       <svg viewBox="0 0 440 240" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
@@ -478,33 +481,27 @@ footer strong { color: #ffffff; }
             <stop offset="100%" stop-color="#0d9488" stop-opacity="0.45"/>
           </linearGradient>
         </defs>
-        <!-- Outer dashed orbit -->
         <ellipse cx="220" cy="120" rx="185" ry="92" fill="none" stroke="rgba(148,163,184,0.28)" stroke-dasharray="5 5"/>
-        <!-- Center Hub -->
         <rect x="145" y="88" width="150" height="64" rx="14" fill="url(#hubGrad)" stroke="#38bdf8" stroke-width="1.8"/>
-        <text x="220" y="116" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="700">Latent Mental State</text>
-        <text x="220" y="135" text-anchor="middle" fill="#bae6fd" font-size="10.5">Symptoms · Cognition · Risk</text>
+        <text x="220" y="115" text-anchor="middle" fill="#ffffff" font-size="12.5" font-weight="700">Latent Mental State</text>
+        <text x="220" y="133" text-anchor="middle" fill="#bae6fd" font-size="10">Symptoms · Physiology · Risk</text>
 
-        <!-- Top Node -->
         <rect x="125" y="10" width="190" height="36" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2"/>
-        <text x="220" y="32" text-anchor="middle" fill="#e0f2fe" font-size="11.5" font-weight="600">Multimodal &amp; Longitudinal Signals</text>
+        <text x="220" y="32" text-anchor="middle" fill="#e0f2fe" font-size="11" font-weight="600">Multimodal &amp; Wearable Signals</text>
         <path d="M220 46 L220 88" stroke="#38bdf8" stroke-width="1.5"/>
 
-        <!-- Bottom Node -->
         <rect x="125" y="194" width="190" height="36" rx="8" fill="#1e293b" stroke="#2dd4bf" stroke-width="1.2"/>
-        <text x="220" y="216" text-anchor="middle" fill="#ccfbf1" font-size="11.5" font-weight="600">Ethical &amp; Safety Guardrails</text>
+        <text x="220" y="216" text-anchor="middle" fill="#ccfbf1" font-size="11" font-weight="600">Safety &amp; Physiological Feedback</text>
         <path d="M220 152 L220 194" stroke="#2dd4bf" stroke-width="1.5"/>
 
-        <!-- Left Node -->
         <rect x="8" y="99" width="112" height="42" rx="8" fill="#1e293b" stroke="#a78bfa" stroke-width="1.2"/>
-        <text x="64" y="117" text-anchor="middle" fill="#ede9fe" font-size="11" font-weight="600">Clinical Knowledge</text>
-        <text x="64" y="131" text-anchor="middle" fill="#c4b5fd" font-size="9.5">DSM-5 · SCID</text>
+        <text x="64" y="117" text-anchor="middle" fill="#ede9fe" font-size="10.5" font-weight="600">Clinical Knowledge</text>
+        <text x="64" y="131" text-anchor="middle" fill="#c4b5fd" font-size="9">DSM-5 · SCID</text>
         <path d="M120 120 L145 120" stroke="#a78bfa" stroke-width="1.5"/>
 
-        <!-- Right Node -->
         <rect x="320" y="99" width="112" height="42" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.2"/>
-        <text x="376" y="117" text-anchor="middle" fill="#fef3c7" font-size="11" font-weight="600">Active Dialogue</text>
-        <text x="376" y="131" text-anchor="middle" fill="#fde68a" font-size="9.5">Simulation &amp; Care</text>
+        <text x="376" y="117" text-anchor="middle" fill="#fef3c7" font-size="10.5" font-weight="600">Active Dialogue</text>
+        <text x="376" y="131" text-anchor="middle" fill="#fde68a" font-size="9">Simulation &amp; Music</text>
         <path d="M295 120 L320 120" stroke="#fbbf24" stroke-width="1.5"/>
       </svg>
     </div>
@@ -516,243 +513,269 @@ footer strong { color: #ffffff; }
   <!-- About -->
   <section id="about">
     <div class="sec-header">
-      <div class="sec-eyebrow">Profile &amp; Mission</div>
-      <h2>About Me</h2>
+      <div class="sec-eyebrow"><span class="lang-zh">学术履历与愿景</span><span class="lang-en">Background &amp; Vision</span></div>
+      <h2><span class="lang-zh">关于我们与研究愿景</span><span class="lang-en">About Research Vision</span></h2>
     </div>
     <div class="surface-card">
-      <p style="margin-top:0;">I am an Associate Professor and Ph.D. Supervisor in the School of Computer Science at <strong>Shanghai Jiao Tong University (SJTU)</strong>, and a core faculty member of the <strong>X-LANCE Lab</strong>. I earned my Ph.D. from the University of Melbourne (2017) and my B.Sc./B.A. from Beijing Normal University (2011).</p>
-      <p style="margin-bottom:0;">My research centers on <strong>Digital Mental Health</strong>—bridging computational linguistics, speech science, clinical psychiatry, and AI ethics. Rather than reducing human psychology to black-box classification labels, our group develops interpretable mental state representations, clinically grounded diagnostic dialogue agents, and rigorous safety benchmarks for trustworthy healthcare AI.</p>
+      <p style="margin-top:0;">
+        <span class="lang-zh">我目前担任上海交通大学计算机学院副教授、博士生导师，是机器智能所与跨媒体语言智能实验室（X-LANCE）核心成员。长期聚焦音频信号处理、自然语言处理、计算精神病学、心理健康大模型与情感计算。</span>
+        <span class="lang-en">I am an Associate Professor and Ph.D. Supervisor in the School of Computer Science at Shanghai Jiao Tong University, affiliated with the X-LANCE Lab. My research focuses on audio processing, natural language processing, computational mental health, and affective computing.</span>
+      </p>
+      <p style="margin-bottom:0;">
+        <span class="lang-zh">心理状态本身不可直接观测，却会在语音、语言、可穿戴生理数据（如睡眠、压力指数）与持续交互中留下线索。我们的研究目标是建立从可观测信号到心理健康状态的闭环世界模型，连接多模态感知、知识增强推理、主动访谈、用户模拟与情感生成。</span>
+        <span class="lang-en">Mental states are unobservable directly but leave traces in speech, language, wearables (sleep, stress), and interactions. Our goal is to build closed-loop world models linking multimodal perception, knowledge-enhanced reasoning, active interviewing, simulation, and affective generation.</span>
+      </p>
     </div>
   </section>
 
   <!-- Recent News -->
   <section id="news">
     <div class="sec-header">
-      <div class="sec-eyebrow">Updates</div>
-      <h2>Recent News</h2>
+      <div class="sec-eyebrow"><span class="lang-zh">近期动态</span><span class="lang-en">Recent Updates</span></div>
+      <h2><span class="lang-zh">最新进展</span><span class="lang-en">News &amp; Highlights</span></h2>
     </div>
     <div class="surface-card">
       <div class="news-grid">
         <div class="news-row">
           <span class="news-date">2026.11</span>
-          <span>Chaired and delivered the opening keynote at the ISCSLP 2026 Special Session in Penang, Malaysia.</span>
+          <span><span class="lang-zh">在马来西亚槟城召开的 ISCSLP 2026 特别分会（Special Session）上担任主席并作开幕特邀报告。</span><span class="lang-en">Chaired and delivered the opening keynote at the ISCSLP 2026 Special Session in Penang, Malaysia.</span></span>
         </div>
         <div class="news-row">
           <span class="news-date">2026.10</span>
-          <span>Released our governance paper <em>Situating Vulnerability: An Ethical Governance Framework for Anthropomorphic AI Interaction</em>.</span>
+          <span><span class="lang-zh">发布伦理治理研究：《情境化脆弱性：拟人化 AI 交互的伦理治理框架》。</span><span class="lang-en">Released our governance study: Situating Vulnerability: An Ethical Governance Framework for Anthropomorphic AI Interaction.</span></span>
         </div>
         <div class="news-row">
           <span class="news-date">2026.09</span>
-          <span><em>MATCHA: A Chinese Multi-Disorder Mental Health Dataset with Cross-Lingual Analyses on Social Media</em> accepted to <strong>Findings of EMNLP 2026</strong>.</span>
-        </div>
-        <div class="news-row">
-          <span class="news-date">2026.07</span>
-          <span><em>Semi-Supervised Diseased Detection from Speech Dialogues with Multi-Level Data Modeling</em> published in <strong>Findings of ACL 2026</strong>.</span>
-        </div>
-        <div class="news-row">
-          <span class="news-date">2026.05</span>
-          <span>Released <em>Emotional Intelligence in Large Language Models is Fragmented Across Perception, Cognition, and Interaction</em> on arXiv.</span>
+          <span><span class="lang-zh">论文《MATCHA：面向社交媒体的中文多疾病心理健康数据集及跨语言分析》被 <strong>Findings of EMNLP 2026</strong> 录用。</span><span class="lang-en">MATCHA accepted to <strong>Findings of EMNLP 2026</strong>.</span></span>
         </div>
         <div class="news-row">
           <span class="news-date">2026.04</span>
-          <span><em>PsyEval: A Comprehensive Large Language Model Evaluation Benchmark for Mental Health</em> published in <strong>npj Mental Health Research</strong>, and <em>From Medical Records to Diagnostic Dialogues</em> presented at <strong>ICLR 2026</strong>.</span>
+          <span><span class="lang-zh">心理健康大模型评测基准《PsyEval》发表于 <strong>npj Mental Health Research</strong>。</span><span class="lang-en">PsyEval published in <strong>npj Mental Health Research</strong>.</span></span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Fancy Research Directions with Wide, Crisp Framework Diagrams -->
+  <!-- Research Frameworks (4 Pillars) -->
   <section id="research">
     <div class="sec-header">
-      <div class="sec-eyebrow">Digital Mental Health · Core Pillars</div>
-      <h2>Research Directions &amp; Conceptual Frameworks</h2>
+      <div class="sec-eyebrow"><span class="lang-zh">核心研究板块</span><span class="lang-en">Core Research Frameworks</span></div>
+      <h2><span class="lang-zh">心理健康世界模型与关键架构</span><span class="lang-en">Mental Health World Modeling Architecture</span></h2>
     </div>
 
     <div class="research-grid">
-
-      <!-- Card 1: Mental State Representation -->
+      <!-- Pillar 1 -->
       <article class="res-card">
         <div class="res-diagram-wrap">
           <svg viewBox="0 0 560 175" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
-            <!-- Left Inputs -->
             <rect x="14" y="16" width="142" height="36" rx="7" fill="#dbeafe" stroke="#2563eb" stroke-width="1.4"/>
             <text x="85" y="38" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">Speech &amp; Prosody</text>
-
             <rect x="14" y="69" width="142" height="36" rx="7" fill="#dbeafe" stroke="#2563eb" stroke-width="1.4"/>
-            <text x="85" y="91" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">Social Media Logs</text>
-
+            <text x="85" y="91" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">Social Logs / Wearables</text>
             <rect x="14" y="122" width="142" height="36" rx="7" fill="#dbeafe" stroke="#2563eb" stroke-width="1.4"/>
-            <text x="85" y="144" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">Verbal Fluency</text>
-
-            <!-- Connectors -->
-            <path d="M156 34 L208 75" stroke="#64748b" stroke-width="1.6"/>
-            <path d="M156 87 L208 87" stroke="#64748b" stroke-width="1.6"/>
-            <path d="M156 140 L208 99" stroke="#64748b" stroke-width="1.6"/>
-
-            <!-- Middle Encoder -->
+            <text x="85" y="144" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">Cognitive Tasks</text>
+            <path d="M156 34 L208 75 M156 87 L208 87 M156 140 L208 99" stroke="#64748b" stroke-width="1.6"/>
             <rect x="208" y="45" width="136" height="84" rx="10" fill="#1e293b"/>
             <text x="276" y="81" text-anchor="middle" font-size="12.5" font-weight="700" fill="#38bdf8">Multi-Level</text>
             <text x="276" y="99" text-anchor="middle" font-size="12.5" font-weight="700" fill="#38bdf8">Modeling</text>
-
             <path d="M344 87 L382 87" stroke="#2563eb" stroke-width="2"/>
-
-            <!-- Right Outputs -->
             <rect x="382" y="24" width="164" height="54" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.4"/>
             <text x="464" y="47" text-anchor="middle" font-size="12" font-weight="700" fill="#1e40af">Symptom Mapping</text>
-            <text x="464" y="64" text-anchor="middle" font-size="10.5" fill="#3b82f6">PsySym &amp; MATCHA (38+)</text>
-
+            <text x="464" y="64" text-anchor="middle" font-size="10" fill="#3b82f6">PsySym &amp; MATCHA (38+)</text>
             <rect x="382" y="96" width="164" height="54" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.4"/>
             <text x="464" y="119" text-anchor="middle" font-size="12" font-weight="700" fill="#1e40af">Cognitive Biomarkers</text>
-            <text x="464" y="136" text-anchor="middle" font-size="10.5" fill="#3b82f6">Dementia &amp; Depression</text>
+            <text x="464" y="136" text-anchor="middle" font-size="10" fill="#3b82f6">Dementia &amp; Speech Pathology</text>
           </svg>
-          <div class="res-diagram-label">Fig 1. Interpretable Multi-Disorder &amp; Cognitive State Representation</div>
+          <div class="res-diagram-label"><span class="lang-zh">图 1. 多模态信号与可穿戴生理指标的心理状态表征</span><span class="lang-en">Fig 1. Multimodal &amp; Physiological Representation</span></div>
         </div>
         <div class="res-content">
           <span class="res-tag tag-blue">Pillar 01 · Representation</span>
-          <h3>Computational Mental State Representation</h3>
-          <p>Moving beyond coarse binary labels to clinically interpretable narratives—modeling fine-grained psychiatric symptoms (PsySym, MATCHA), stressful life events, self-supervised acoustic embeddings (DEPA), and semantic verbal fluency markers for dementia screening.</p>
-          <div class="res-papers">
-            <strong>Representative Works:</strong> Findings of EMNLP 2026 (MATCHA), <em>npj Dementia</em> 2026, Findings of ACL 2026, EMNLP 2022.
-          </div>
+          <h3><span class="lang-zh">心理状态表征与感知</span><span class="lang-en">Mental State Representation &amp; Perception</span></h3>
+          <p><span class="lang-zh">突破单一诊断标签，深度解析发声生理机制（构音、韵律、呼吸控制）、社交图文及可穿戴生理指标（睡眠、压力），建立跨疾病、可解释的症状与认知表征。</span><span class="lang-en">Moving beyond binary labels to parse speech physiology, social logs, and wearable metrics (sleep/stress) for interpretable symptom and cognitive representations.</span></p>
+          <div class="res-papers"><strong>代表成果：</strong>EMNLP (MATCHA), npj Dementia, ACL (Pathological2Caption)</div>
         </div>
       </article>
 
-      <!-- Card 2: Clinical AI & Reasoning -->
+      <!-- Pillar 2 -->
       <article class="res-card">
         <div class="res-diagram-wrap">
           <svg viewBox="0 0 560 175" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
-            <!-- Left -->
             <rect x="14" y="24" width="154" height="54" rx="8" fill="#ccfbf1" stroke="#0d9488" stroke-width="1.4"/>
-            <text x="91" y="47" text-anchor="middle" font-size="12" font-weight="700" fill="#115e59">Clinical EHRs</text>
-            <text x="91" y="64" text-anchor="middle" font-size="10.5" fill="#0f766e">Psychiatric Comorbidity</text>
-
+            <text x="91" y="47" text-anchor="middle" font-size="12" font-weight="700" fill="#115e59">Clinical EHRs &amp; SCID</text>
+            <text x="91" y="64" text-anchor="middle" font-size="10" fill="#0f766e">Psychiatric Comorbidity</text>
             <rect x="14" y="96" width="154" height="54" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="1.4"/>
             <text x="91" y="119" text-anchor="middle" font-size="12" font-weight="700" fill="#92400e">Patient Simulation</text>
-            <text x="91" y="136" text-anchor="middle" font-size="10.5" fill="#b45309">Longitudinal Digital Twins</text>
-
-            <!-- Arrows -->
-            <path d="M168 51 L212 78" stroke="#0d9488" stroke-width="1.8"/>
-            <path d="M168 123 L212 96" stroke="#d97706" stroke-width="1.8"/>
-
-            <!-- Center -->
+            <text x="91" y="136" text-anchor="middle" font-size="10" fill="#b45309">Longitudinal Digital Twins</text>
+            <path d="M168 51 L212 78 M168 123 L212 96" stroke="#0d9488" stroke-width="1.8"/>
             <rect x="212" y="42" width="144" height="90" rx="10" fill="#0f766e"/>
-            <text x="284" y="81" text-anchor="middle" font-size="12.5" font-weight="700" fill="#ffffff">SCID-Guided</text>
-            <text x="284" y="99" text-anchor="middle" font-size="12.5" font-weight="700" fill="#ccfbf1">Active Inference</text>
-
+            <text x="284" y="81" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">SCID-Guided</text>
+            <text x="284" y="99" text-anchor="middle" font-size="12" font-weight="700" fill="#ccfbf1">Active Inference</text>
             <path d="M356 87 L392 87" stroke="#0d9488" stroke-width="2"/>
-
-            <!-- Right -->
             <rect x="392" y="42" width="154" height="90" rx="10" fill="#f0fdfa" stroke="#0d9488" stroke-width="1.4"/>
             <text x="469" y="75" text-anchor="middle" font-size="12" font-weight="700" fill="#115e59">Diagnostic Dialogue</text>
-            <text x="469" y="94" text-anchor="middle" font-size="10.5" fill="#0f766e">&amp; Causal Life-Event</text>
-            <text x="469" y="110" text-anchor="middle" font-size="10.5" fill="#0f766e">Reasoning</text>
+            <text x="469" y="94" text-anchor="middle" font-size="10" fill="#0f766e">&amp; Causal Life-Event</text>
+            <text x="469" y="110" text-anchor="middle" font-size="10" fill="#0f766e">Reasoning</text>
           </svg>
-          <div class="res-diagram-label">Fig 2. Clinical-Grounded Diagnostic Dialogue &amp; Comorbidity Reasoning</div>
+          <div class="res-diagram-label"><span class="lang-zh">图 2. 临床知识引导的主动诊断对话与因果推理</span><span class="lang-en">Fig 2. Clinical-Grounded Diagnostic Dialogue &amp; Reasoning</span></div>
         </div>
         <div class="res-content">
           <span class="res-tag tag-teal">Pillar 02 · Clinical Reasoning</span>
-          <h3>Clinical AI &amp; Mental State Reasoning</h3>
-          <p>Developing clinically grounded dialogue systems that actively infer latent mental states through structured psychiatric interviewing (SCID protocols), psychiatric comorbidity modeling from real medical records, longitudinal causal mapping, and realistic patient simulation.</p>
-          <div class="res-papers">
-            <strong>Representative Works:</strong> ICLR 2026 (Comorbidity Dialogues), ACL 2025, NAACL 2024, EMNLP 2023 (PsyEx), EMNLP 2022 (D4).
-          </div>
+          <h3><span class="lang-zh">临床推理与主动对话</span><span class="lang-en">Clinical AI &amp; Active Reasoning</span></h3>
+          <p><span class="lang-zh">结合 DSM-5 / SCID 访谈标准与真实电子病历，研究能够主动提问、避免访谈漂移并具备精神病理学知识约束的诊断对话智能体。</span><span class="lang-en">Developing clinically grounded dialogue systems guided by SCID protocols, EHRs, and psychiatric knowledge graphs for active interviewing.</span></p>
+          <div class="res-papers"><strong>代表成果：</strong>ICLR (Comorbidity Dialogues), ACL, NAACL</div>
         </div>
       </article>
 
-      <!-- Card 3: PsyEval & Psychological Intelligence -->
+      <!-- Pillar 3 -->
       <article class="res-card">
         <div class="res-diagram-wrap">
           <svg viewBox="0 0 560 175" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
-            <!-- Top Row: 3 Evaluation Pillars -->
             <rect x="16" y="20" width="164" height="60" rx="8" fill="#e0e7ff" stroke="#4f46e5" stroke-width="1.4"/>
             <text x="98" y="45" text-anchor="middle" font-size="12" font-weight="700" fill="#312e81">Perception</text>
-            <text x="98" y="63" text-anchor="middle" font-size="10.5" fill="#4338ca">Emotion &amp; Cue Recognition</text>
-
+            <text x="98" y="63" text-anchor="middle" font-size="10" fill="#4338ca">Emotion &amp; Cue Recognition</text>
             <rect x="198" y="20" width="164" height="60" rx="8" fill="#e0e7ff" stroke="#4f46e5" stroke-width="1.4"/>
             <text x="280" y="45" text-anchor="middle" font-size="12" font-weight="700" fill="#312e81">Cognition</text>
-            <text x="280" y="63" text-anchor="middle" font-size="10.5" fill="#4338ca">Clinical &amp; Causal Reasoning</text>
-
+            <text x="280" y="63" text-anchor="middle" font-size="10" fill="#4338ca">Clinical Reasoning</text>
             <rect x="380" y="20" width="164" height="60" rx="8" fill="#e0e7ff" stroke="#4f46e5" stroke-width="1.4"/>
             <text x="462" y="45" text-anchor="middle" font-size="12" font-weight="700" fill="#312e81">Interaction</text>
-            <text x="462" y="63" text-anchor="middle" font-size="10.5" fill="#4338ca">Empathy &amp; Therapeutic Skill</text>
-
-            <!-- Converging Lines -->
-            <path d="M98 80 L250 112" stroke="#4f46e5" stroke-width="1.5"/>
-            <path d="M280 80 L280 112" stroke="#4f46e5" stroke-width="1.5"/>
-            <path d="M462 80 L310 112" stroke="#4f46e5" stroke-width="1.5"/>
-
-            <!-- Bottom Unified Benchmark Box -->
+            <text x="462" y="63" text-anchor="middle" font-size="10" fill="#4338ca">Empathy &amp; Support</text>
+            <path d="M98 80 L250 112 M280 80 L280 112 M462 80 L310 112" stroke="#4f46e5" stroke-width="1.5"/>
             <rect x="90" y="112" width="380" height="46" rx="9" fill="#312e81"/>
             <text x="280" y="139" text-anchor="middle" font-size="12.5" font-weight="700" fill="#ffffff">PsyEval: Holistic Mental Health LLM Benchmark</text>
           </svg>
-          <div class="res-diagram-label">Fig 3. Multi-Dimensional Psychological &amp; Emotional Intelligence Evaluation</div>
+          <div class="res-diagram-label"><span class="lang-zh">图 3. 心理大模型多维度评测基准 (PsyEval)</span><span class="lang-en">Fig 3. Multi-Dimensional Psychological Evaluation Benchmark</span></div>
         </div>
         <div class="res-content">
           <span class="res-tag tag-indigo">Pillar 03 · Evaluation</span>
-          <h3>Psychological Intelligence &amp; LLM Benchmarking</h3>
-          <p>Systematically evaluating how foundation models perceive, reason about, and respond to human psychological states—uncovering fragmentation across emotional perception, cognitive appraisal, and multi-turn therapeutic interaction.</p>
-          <div class="res-papers">
-            <strong>Representative Works:</strong> <em>npj Mental Health Research</em> 2026 (PsyEval), arXiv 2026 (Emotional Intelligence Fragmentation).
-          </div>
+          <h3><span class="lang-zh">心理大模型评测与基准</span><span class="lang-en">Psychological Benchmarking</span></h3>
+          <p><span class="lang-zh">系统评估大语言模型在人类心理感知、认知推理与多轮共情交互中的表现，揭示并解决模型在情感智能上的碎片化现象。</span><span class="lang-en">Systematically evaluating how foundation models perceive, reason about, and respond to human psychological states across perception, cognition, and interaction.</span></p>
+          <div class="res-papers"><strong>代表成果：</strong>npj Mental Health Research (PsyEval), arXiv 2026</div>
         </div>
       </article>
 
-      <!-- Card 4: Ethical Governance & Safety -->
+      <!-- Pillar 4 -->
       <article class="res-card">
         <div class="res-diagram-wrap">
           <svg viewBox="0 0 560 175" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
-            <!-- Left Risk Input -->
             <rect x="16" y="45" width="150" height="84" rx="9" fill="#fef3c7" stroke="#d97706" stroke-width="1.4"/>
             <text x="91" y="79" text-anchor="middle" font-size="12" font-weight="700" fill="#92400e">Anthropomorphic</text>
             <text x="91" y="96" text-anchor="middle" font-size="12" font-weight="700" fill="#92400e">AI Interaction</text>
             <text x="91" y="114" text-anchor="middle" font-size="10" fill="#b45309">User Vulnerability</text>
-
             <path d="M166 87 L204 87" stroke="#d97706" stroke-width="2"/>
-
-            <!-- Center Defense Layers -->
             <rect x="204" y="20" width="172" height="38" rx="7" fill="#fee2e2" stroke="#dc2626" stroke-width="1.3"/>
-            <text x="290" y="43" text-anchor="middle" font-size="11.5" font-weight="700" fill="#7f1d1d">1. Vulnerability Situating</text>
-
+            <text x="290" y="43" text-anchor="middle" font-size="11" font-weight="700" fill="#7f1d1d">1. Vulnerability Situating</text>
             <rect x="204" y="68" width="172" height="38" rx="7" fill="#fee2e2" stroke="#dc2626" stroke-width="1.3"/>
-            <text x="290" y="91" text-anchor="middle" font-size="11.5" font-weight="700" fill="#7f1d1d">2. Medical Ethics Alignment</text>
-
+            <text x="290" y="91" text-anchor="middle" font-size="11" font-weight="700" fill="#7f1d1d">2. Medical Ethics Alignment</text>
             <rect x="204" y="116" width="172" height="38" rx="7" fill="#fee2e2" stroke="#dc2626" stroke-width="1.3"/>
-            <text x="290" y="139" text-anchor="middle" font-size="11.5" font-weight="700" fill="#7f1d1d">3. Crisis Guardrails</text>
-
+            <text x="290" y="139" text-anchor="middle" font-size="11" font-weight="700" fill="#7f1d1d">3. Crisis Guardrails</text>
             <path d="M376 87 L410 87" stroke="#0d9488" stroke-width="2"/>
-
-            <!-- Right Safe Deployment -->
             <rect x="410" y="45" width="136" height="84" rx="9" fill="#0f172a"/>
             <text x="478" y="81" text-anchor="middle" font-size="12" font-weight="700" fill="#38bdf8">Trustworthy</text>
             <text x="478" y="99" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">Deployment</text>
           </svg>
-          <div class="res-diagram-label">Fig 4. Situating Vulnerability &amp; Medical Ethics Alignment Pipeline</div>
+          <div class="res-diagram-label"><span class="lang-zh">图 4. 拟人化 AI 脆弱性治理与医疗伦理对齐体系</span><span class="lang-en">Fig 4. Vulnerability Governance &amp; Ethics Alignment</span></div>
         </div>
         <div class="res-content">
-          <span class="res-tag tag-amber">Pillar 04 · AI Safety &amp; Ethics</span>
-          <h3>Ethical Governance &amp; Safety Alignment</h3>
-          <p>Addressing relational dependency and user vulnerability in anthropomorphic AI—establishing human-centric medical ethics alignment pipelines (MedEthicEval) and multi-dimensional crisis intervention guardrails for real-world clinical systems.</p>
-          <div class="res-papers">
-            <strong>Representative Works:</strong> <em>Situating Vulnerability</em> (2026), AAAI 2026 (Medical Ethics Alignment), NAACL 2025 (MedEthicEval).
-          </div>
+          <span class="res-tag tag-amber">Pillar 04 · Safety &amp; Ethics</span>
+          <h3><span class="lang-zh">伦理治理与安全护栏</span><span class="lang-en">Ethical Governance &amp; Safety</span></h3>
+          <p><span class="lang-zh">关注拟人化交互中的用户依赖与情感脆弱性，建立包含意图识别、五维危机响应与中国医疗伦理对齐的可靠安全边界。</span><span class="lang-en">Addressing user vulnerability in anthropomorphic AI through medical ethics alignment pipelines (MedEthicEval) and crisis guardrails.</span></p>
+          <div class="res-papers"><strong>代表成果：</strong>Situating Vulnerability (2026), AAAI, NAACL</div>
         </div>
       </article>
 
     </div>
   </section>
 
-  <!-- Publications -->
+  <!-- NEW SECTION: Music Emotion & Controlled Generation (Music 板块) -->
+  <section id="music">
+    <div class="sec-header">
+      <div class="sec-eyebrow"><span class="lang-zh">音乐与情感计算板块</span><span class="lang-en">Music &amp; Affective Generation</span></div>
+      <h2><span class="lang-zh">情绪音乐：从情感理解走向可控生成与个性化支持</span><span class="lang-en">Affective Music: From Understanding to Controlled Generation</span></h2>
+    </div>
+
+    <div class="music-hero">
+      <div>
+        <div class="music-label">VALENCE–AROUSAL SPACE</div>
+        <h3>
+          <span class="lang-zh">用连续情感坐标描述音乐，实现可控生成与情感调节。</span>
+          <span class="lang-en">Describing Music via Continuous Valence–Arousal Coordinates.</span>
+        </h3>
+        <p>
+          <span class="lang-zh">效价（Valence）描述情绪正负倾向，唤醒度（Arousal）描述激活水平。连续坐标让“生成一首稍微更平静、更温暖的音乐”成为可能，并可结合可穿戴生理反馈闭环。</span>
+          <span class="lang-en">Valence describes positivity while arousal represents activation. Continuous coordinates enable precise affective generation and physiological feedback loops.</span>
+        </p>
+      </div>
+      <div class="va-plot">
+        <div class="va-y"><span class="lang-zh">唤醒度 Arousal →</span><span class="lang-en">Arousal →</span></div>
+        <div class="va-quadrants">
+          <div class="q q2"><span class="lang-zh">紧张 · 焦虑</span><span class="lang-en">Tense · Anxious</span></div>
+          <div class="q q1"><span class="lang-zh">兴奋 · 愉悦</span><span class="lang-en">Excited · Joyful</span></div>
+          <div class="q q3"><span class="lang-zh">低落 · 疲惫</span><span class="lang-en">Sad · Fatigued</span></div>
+          <div class="q q4"><span class="lang-zh">平静 · 放松</span><span class="lang-en">Calm · Relaxed</span></div>
+        </div>
+        <div class="va-x"><span class="lang-zh">效价 Valence →</span><span class="lang-en">Valence →</span></div>
+      </div>
+    </div>
+
+    <div class="music-metrics">
+      <div class="music-metric-card"><strong>6,254</strong><span><span class="lang-zh">MUSE-VA 音乐曲目</span><span class="lang-en">MUSE-VA Tracks</span></span></div>
+      <div class="music-metric-card"><strong>321.1h</strong><span><span class="lang-zh">配套音频时长</span><span class="lang-en">Audio Hours</span></span></div>
+      <div class="music-metric-card"><strong>LARA-Gen</strong><span><span class="lang-zh">连续 VA 情感控制</span><span class="lang-en">Continuous VA Control</span></span></div>
+      <div class="music-metric-card"><strong>UniAudio</strong><span><span class="lang-zh">流式音频生成架构</span><span class="lang-en">Flow-Matching Audio</span></span></div>
+    </div>
+
+    <div class="research-grid">
+      <article class="res-card" style="background:#fff;">
+        <div class="res-content" style="padding:24px;">
+          <span class="res-tag tag-purple">DATASET &amp; BENCHMARK</span>
+          <h3>MUSE-VA: Affective Music Dataset</h3>
+          <p><span class="lang-zh">面向音乐情感计算的合成多模态数据集，包含 6,254 首完整音乐、321.1 小时音频及 12 类离散情感标签与音乐—图像配对。</span><span class="lang-en">A multimodal dataset for music emotion recognition containing 6,254 tracks, 321.1 audio hours, and 12 discrete emotion categories.</span></p>
+          <div class="pub-actions" style="margin-top:auto;">
+            <a href="https://nieeim.github.io/MUSE-VA/" target="_blank" rel="noopener" class="action-chip">Project Website ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="res-card" style="background:#fff;">
+        <div class="res-content" style="padding:24px;">
+          <span class="res-tag tag-purple">GENERATION DEMO</span>
+          <h3>LARA-Gen: Controlled Generation</h3>
+          <p><span class="lang-zh">通过连续 Valence–Arousal 数值指定情感目标，以潜在表征对齐提供显式监督，并支持对生成结果的情感遵循度评估。</span><span class="lang-en">Controlled music generation via continuous VA targets with latent representation alignment.</span></p>
+          <div class="pub-actions" style="margin-top:auto;">
+            <a href="https://anonymous2232330.github.io/laragen-web/" target="_blank" rel="noopener" class="action-chip">Interactive Demo ↗</a>
+            <a href="https://arxiv.org/abs/2509.24391" target="_blank" rel="noopener" class="action-chip">UniAudio-flow ↗</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="music-loop">
+      <b><span class="lang-zh">潜在支持路径：个性化情绪调节与生理闭环</span><span class="lang-en">Potential Support Path: Personalized Emotion Regulation Loop</span></b>
+      <div class="music-steps">
+        <span><span class="lang-zh">情绪与生理识别</span><span class="lang-en">State Detection</span></span><i>→</i>
+        <span><span class="lang-zh">设定目标情感 (VA)</span><span class="lang-en">Set VA Target</span></span><i>→</i>
+        <span><span class="lang-zh">音乐情感生成/推荐</span><span class="lang-en">Music Generation</span></span><i>→</i>
+        <span><span class="lang-zh">生理与主观闭环评估</span><span class="lang-en">Feedback Evaluation</span></span>
+      </div>
+      <p>
+        <span class="lang-zh"><b>研究边界：</b>当前工作支撑音乐情感计算与可控生成能力，未来可探索其在放松、情绪表达与日常自我调节中的辅助价值，并结合可穿戴生理反馈进行效果校验。</span>
+        <span class="lang-en"><b>Scope:</b> Current work establishes affective computing and controlled generation capabilities, supporting future daily relaxation and self-regulation validation.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Publications with Filter & GitHub Links -->
   <section id="publications">
     <div class="sec-header">
-      <div class="sec-eyebrow">Scholarly Output</div>
-      <h2>Selected Publications</h2>
+      <div class="sec-eyebrow"><span class="lang-zh">学术成果</span><span class="lang-en">Scholarly Output</span></div>
+      <h2><span class="lang-zh">论文代表作与开源项目</span><span class="lang-en">Selected Publications &amp; Open Source</span></h2>
     </div>
 
     <div class="filter-tabs">
-      <button class="tab-btn active" onclick="filterPubs('all', this)">All Selected (14)</button>
-      <button class="tab-btn" onclick="filterPubs('rep', this)">Mental State Representation</button>
-      <button class="tab-btn" onclick="filterPubs('clin', this)">Clinical AI &amp; Reasoning</button>
-      <button class="tab-btn" onclick="filterPubs('trust', this)">Evaluation, Safety &amp; Ethics</button>
+      <button class="tab-btn active" onclick="filterPubs('all', this)"><span class="lang-zh">全部代表作</span><span class="lang-en">All Selected</span></button>
+      <button class="tab-btn" onclick="filterPubs('rep', this)"><span class="lang-zh">心理状态表征</span><span class="lang-en">Representation</span></button>
+      <button class="tab-btn" onclick="filterPubs('clin', this)"><span class="lang-zh">临床AI与推理</span><span class="lang-en">Clinical AI &amp; Reasoning</span></button>
+      <button class="tab-btn" onclick="filterPubs('trust', this)"><span class="lang-zh">评测、安全与伦理</span><span class="lang-en">Evaluation, Safety &amp; Ethics</span></button>
     </div>
 
     <div class="pub-stack">
@@ -813,25 +836,6 @@ footer strong { color: #ffffff; }
 }</div>
       </div>
 
-      <div class="pub-card" data-cat="rep">
-        <div class="pub-header">
-          <div class="pub-title">Clustering and Switching Patterns in Semantic Verbal Fluency among Chinese Older Adults: Associations with Cognitive Function and Dementia Screening</div>
-          <span class="pub-pill">Representation</span>
-        </div>
-        <div class="pub-authors">Juqiang Chen, et al., Mengyue Wu</div>
-        <div class="pub-venue">npj Dementia, 2026</div>
-        <div class="pub-actions">
-          <a href="https://www.nature.com/articles/s44400-026-00113-8" target="_blank" rel="noopener" class="action-chip">Nature Portfolio ↗</a>
-          <a href="javascript:void(0)" class="action-chip" onclick="toggleBib('bib-npjdementia')">BibTeX</a>
-        </div>
-        <div id="bib-npjdementia" class="bibtex-box">@article{chen2026clustering,
-  title={Clustering and Switching Patterns in Semantic Verbal Fluency among Chinese Older Adults: Associations with Cognitive Function and Dementia Screening},
-  author={Chen, Juqiang and others and Wu, Mengyue},
-  journal={npj Dementia},
-  year={2026}
-}</div>
-      </div>
-
       <div class="pub-card" data-cat="clin">
         <div class="pub-header">
           <div class="pub-title">From Medical Records to Diagnostic Dialogues: A Clinical-Grounded Approach and Dataset for Psychiatric Comorbidity</div>
@@ -872,45 +876,6 @@ footer strong { color: #ffffff; }
 }</div>
       </div>
 
-      <div class="pub-card" data-cat="trust">
-        <div class="pub-header">
-          <div class="pub-title">A Human-Centric Pipeline for Aligning Large Language Models with Chinese Medical Ethics</div>
-          <span class="pub-pill">Safety &amp; Ethics</span>
-        </div>
-        <div class="pub-authors">Haoan Jin, Han Ying, et al., Mengyue Wu</div>
-        <div class="pub-venue">Proceedings of the AAAI Conference on Artificial Intelligence (AAAI), 2026</div>
-        <div class="pub-actions">
-          <a href="https://doi.org/10.1609/aaai.v40i45.41211" target="_blank" rel="noopener" class="action-chip">AAAI DOI ↗</a>
-          <a href="javascript:void(0)" class="action-chip" onclick="toggleBib('bib-aaai26')">BibTeX</a>
-        </div>
-        <div id="bib-aaai26" class="bibtex-box">@inproceedings{jin2026human,
-  title={A Human-Centric Pipeline for Aligning Large Language Models with Chinese Medical Ethics},
-  author={Jin, Haoan and Ying, Han and others and Wu, Mengyue},
-  booktitle={AAAI},
-  pages={38679--38687},
-  year={2026}
-}</div>
-      </div>
-
-      <div class="pub-card" data-cat="trust">
-        <div class="pub-header">
-          <div class="pub-title">Emotional Intelligence in Large Language Models is Fragmented Across Perception, Cognition, and Interaction</div>
-          <span class="pub-pill">Evaluation</span>
-        </div>
-        <div class="pub-authors">Minghao Lv, et al., Mengyue Wu</div>
-        <div class="pub-venue">arXiv preprint arXiv:2605.24686, 2026</div>
-        <div class="pub-actions">
-          <a href="https://arxiv.org/abs/2605.24686" target="_blank" rel="noopener" class="action-chip">arXiv ↗</a>
-          <a href="javascript:void(0)" class="action-chip" onclick="toggleBib('bib-ei')">BibTeX</a>
-        </div>
-        <div id="bib-ei" class="bibtex-box">@article{lv2026emotional,
-  title={Emotional intelligence in large language models is fragmented across perception, cognition, and interaction},
-  author={Lv, Minghao and others and Wu, Mengyue},
-  journal={arXiv preprint arXiv:2605.24686},
-  year={2026}
-}</div>
-      </div>
-
       <div class="pub-card" data-cat="clin">
         <div class="pub-header">
           <div class="pub-title">Tracking Life's Ups and Downs: Mining Life Events from Social Media Posts for Mental Health Analysis</div>
@@ -931,69 +896,9 @@ footer strong { color: #ffffff; }
 }</div>
       </div>
 
-      <div class="pub-card" data-cat="trust">
-        <div class="pub-header">
-          <div class="pub-title">MedEthicEval: Evaluating Large Language Models Based on Chinese Medical Ethics</div>
-          <span class="pub-pill">Safety &amp; Ethics</span>
-        </div>
-        <div class="pub-authors">Haoan Jin, Jiacheng Shi, et al., Mengyue Wu</div>
-        <div class="pub-venue">Proceedings of NAACL-HLT 2025 (Industry Track)</div>
-        <div class="pub-actions">
-          <a href="https://aclanthology.org/2025.naacl-industry.34/" target="_blank" rel="noopener" class="action-chip">ACL Anthology ↗</a>
-          <a href="javascript:void(0)" class="action-chip" onclick="toggleBib('bib-medethic')">BibTeX</a>
-        </div>
-        <div id="bib-medethic" class="bibtex-box">@inproceedings{jin2025medethiceval,
-  title={MedEthicEval: Evaluating Large Language Models Based on Chinese Medical Ethics},
-  author={Jin, Haoan and Shi, Jiacheng and others and Wu, Mengyue},
-  booktitle={NAACL-HLT (Industry Track)},
-  pages={404--421},
-  year={2025}
-}</div>
-      </div>
-
-      <div class="pub-card" data-cat="clin">
-        <div class="pub-header">
-          <div class="pub-title">Mapping Long-Term Causalities in Psychiatric Symptomatology and Life Events from Social Media</div>
-          <span class="pub-pill">Clinical AI</span>
-        </div>
-        <div class="pub-authors">Siyuan Chen, Meilin Wang, et al., Mengyue Wu</div>
-        <div class="pub-venue">Proceedings of NAACL-HLT 2024 (Long Papers)</div>
-        <div class="pub-actions">
-          <a href="https://aclanthology.org/" target="_blank" rel="noopener" class="action-chip">ACL Anthology ↗</a>
-          <a href="javascript:void(0)" class="action-chip" onclick="toggleBib('bib-naacl24')">BibTeX</a>
-        </div>
-        <div id="bib-naacl24" class="bibtex-box">@inproceedings{chen2024mapping,
-  title={Mapping long-term causalities in psychiatric symptomatology and life events from social media},
-  author={Chen, Siyuan and Wang, Meilin and others and Wu, Mengyue},
-  booktitle={NAACL-HLT},
-  pages={5472--5487},
-  year={2024}
-}</div>
-      </div>
-
-      <div class="pub-card" data-cat="clin">
-        <div class="pub-header">
-          <div class="pub-title">Detection of Multiple Mental Disorders from Social Media with Two-Stream Psychiatric Experts</div>
-          <span class="pub-pill">Clinical AI</span>
-        </div>
-        <div class="pub-authors">Siyuan Chen, Zhiling Zhang, Mengyue Wu, Kenny Q. Zhu</div>
-        <div class="pub-venue">Proceedings of EMNLP 2023</div>
-        <div class="pub-actions">
-          <a href="https://aclanthology.org/2023.emnlp-main.562/" target="_blank" rel="noopener" class="action-chip">ACL Anthology ↗</a>
-          <a href="javascript:void(0)" class="action-chip" onclick="toggleBib('bib-psyex')">BibTeX</a>
-        </div>
-        <div id="bib-psyex" class="bibtex-box">@inproceedings{chen2023detection,
-  title={Detection of Multiple Mental Disorders from Social Media with Two-Stream Psychiatric Experts},
-  author={Chen, Siyuan and Zhang, Zhiling and Wu, Mengyue and Zhu, Kenny Q},
-  booktitle={EMNLP},
-  pages={9071--9084},
-  year={2023}
-}</div>
-      </div>
-
       <div class="pub-card" data-cat="rep">
         <div class="pub-header">
-          <div class="pub-title">Symptom Identification for Interpretable Detection of Multiple Mental Disorders on Social Media</div>
+          <div class="pub-title">Symptom Identification for Interpretable Detection of Multiple Mental Disorders on Social Media (PsySym)</div>
           <span class="pub-pill">Representation</span>
         </div>
         <div class="pub-authors">Zhiling Zhang, Siyuan Chen, Mengyue Wu, Kenny Q. Zhu</div>
@@ -1011,53 +916,48 @@ footer strong { color: #ffffff; }
 }</div>
       </div>
 
-      <div class="pub-card" data-cat="rep">
-        <div class="pub-header">
-          <div class="pub-title">DEPA: Self-Supervised Audio Embedding for Depression Detection</div>
-          <span class="pub-pill">Representation</span>
-        </div>
-        <div class="pub-authors">Pingyue Zhang, Mengyue Wu, Heinrich Dinkel, Kai Yu</div>
-        <div class="pub-venue">Proceedings of ACM Multimedia (MM), 2021</div>
-        <div class="pub-actions">
-          <a href="https://doi.org/10.1145/3474085.3479236" target="_blank" rel="noopener" class="action-chip">ACM DOI ↗</a>
-          <a href="javascript:void(0)" class="action-chip" onclick="toggleBib('bib-depa')">BibTeX</a>
-        </div>
-        <div id="bib-depa" class="bibtex-box">@inproceedings{zhang2021depa,
-  title={DEPA: Self-Supervised Audio Embedding for Depression Detection},
-  author={Zhang, Pingyue and Wu, Mengyue and Dinkel, Heinrich and Yu, Kai},
-  booktitle={ACM MM},
-  pages={135--143},
-  year={2021}
-}</div>
-      </div>
+    </div>
+  </section>
 
+  <!-- Partners -->
+  <section id="partners">
+    <div class="sec-header">
+      <div class="sec-eyebrow"><span class="lang-zh">合作生态</span><span class="lang-en">Collaboration</span></div>
+      <h2><span class="lang-zh">合作伙伴</span><span class="lang-en">Partners &amp; Institutions</span></h2>
+    </div>
+    <div class="partner-grid">
+      <div class="partner"><small><span class="lang-zh">临床精神卫生</span><span class="lang-en">Clinical Psych</span></small><b>上海市精神卫生中心</b></div>
+      <div class="partner"><small><span class="lang-zh">公共卫生</span><span class="lang-en">Public Health</span></small><b>上海交通大学公卫学院</b></div>
+      <div class="partner"><small><span class="lang-zh">综合临床</span><span class="lang-en">General Hospital</span></small><b>瑞金医院</b></div>
+      <div class="partner"><small><span class="lang-zh">大模型生态</span><span class="lang-en">AI Lab</span></small><b>阿里巴巴通义实验室</b></div>
+      <div class="partner"><small><span class="lang-zh">金融科技</span><span class="lang-en">Fintech</span></small><b>蚂蚁集团</b></div>
+      <div class="partner"><small><span class="lang-zh">智能终端</span><span class="lang-en">Smart Devices</span></small><b>OPPO / 小米</b></div>
+      <div class="partner"><small><span class="lang-zh">儿童医疗</span><span class="lang-en">Pediatric</span></small><b>上海儿童医学中心</b></div>
+      <div class="partner"><small><span class="lang-zh">持续拓展</span><span class="lang-en">Expanding</span></small><b>更多医疗与产业伙伴</b></div>
     </div>
   </section>
 
   <!-- Service, Honors & Teaching -->
   <section id="honors">
     <div class="sec-header">
-      <div class="sec-eyebrow">Community &amp; Education</div>
-      <h2>Service, Honors &amp; Teaching</h2>
+      <div class="sec-eyebrow"><span class="lang-zh">学术服务与教学</span><span class="lang-en">Service &amp; Teaching</span></div>
+      <h2><span class="lang-zh">荣誉、服务与 SJTU 教学</span><span class="lang-en">Honors, Service &amp; Teaching</span></h2>
     </div>
     <div class="bottom-grid">
       <div class="surface-card">
-        <h3 style="margin-top:0; font-size:17px; color:var(--navy);">Academic Service &amp; Honors</h3>
+        <h3 style="margin-top:0; font-size:17px; color:var(--navy);"><span class="lang-zh">学术服务与荣誉</span><span class="lang-en">Service &amp; Honors</span></h3>
         <ul class="clean-list">
-          <li><strong>Conference Leadership:</strong> Treasurer, COLING 2027; Grant Committee Co-Chair, Interspeech 2026; Special Session Chair, ISCSLP 2026; Social Event Chair, Interspeech 2020; Local Organization Chair, ACM ICMI 2019.</li>
-          <li><strong>Editorial &amp; Reviewing:</strong> Area Chair for ACL Rolling Review (ACL, EMNLP, NAACL) and Interspeech.</li>
-          <li><strong>2025 ACL Outstanding Paper Award</strong></li>
-          <li><strong>2025 China Computing Foundation Natural Science Award</strong> (Third Prize)</li>
-          <li><strong>2023 NCMMSC Best Paper Candidate</strong></li>
-          <li><strong>2019 ACM SIGCHI Outstanding Service Award</strong></li>
+          <li><strong>Leadership:</strong> Treasurer, COLING 2027; Grant Committee Co-Chair, Interspeech 2026; Special Session Chair, ISCSLP 2026.</li>
+          <li><strong>Area Chair:</strong> ACL Rolling Review (ACL, EMNLP, NAACL) &amp; Interspeech.</li>
+          <li><strong>Awards:</strong> 2025 ACL Outstanding Paper Award; 2025 CCF Natural Science Award (Third Prize).</li>
         </ul>
       </div>
       <div class="surface-card">
-        <h3 style="margin-top:0; font-size:17px; color:var(--navy);">Teaching at SJTU</h3>
+        <h3 style="margin-top:0; font-size:17px; color:var(--navy);"><span class="lang-zh">交大授课 (SJTU Courses)</span><span class="lang-en">Teaching at SJTU</span></h3>
         <ul class="clean-list">
-          <li><strong>AI3611 Deep Learning:</strong> A Practical Course on Perception and Cognition</li>
-          <li><strong>CS3309 Computer Ethics:</strong> AI Fairness, Alignment, and Safety Governance</li>
-          <li><strong>GE6001 Scientific Writing, Integrity and Ethics:</strong> Graduate Core Course</li>
+          <li><strong>AI3611 <span class="lang-zh">深度学习：感知与认知</span><span class="lang-en">Deep Learning: Perception &amp; Cognition</span></strong></li>
+          <li><strong>CS3309 <span class="lang-zh">计算机伦理学：AI 对齐与安全治理</span><span class="lang-en">Computer Ethics: AI Fairness &amp; Safety</span></strong></li>
+          <li><strong>GE6001 <span class="lang-zh">研究生学术写作、规范与伦理</span><span class="lang-en">Scientific Writing, Integrity and Ethics</span></strong></li>
         </ul>
       </div>
     </div>
@@ -1067,8 +967,8 @@ footer strong { color: #ffffff; }
 
 <footer>
   <div class="wrap">
-    <p><strong>Mengyue Wu</strong> · Digital Mental Health · Shanghai Jiao Tong University</p>
-    <p style="margin-top:6px; font-size:12px;">3-543 SEIEE Building, 800 Dongchuan Road, Shanghai 200240, China</p>
+    <p><strong>Mengyue Wu</strong> · Digital Mental Health World Modeling · Shanghai Jiao Tong University</p>
+    <p style="margin-top:6px; font-size:12px; color:#94a3b8;">3-543 SEIEE Building, 800 Dongchuan Road, Shanghai 200240, China</p>
   </div>
 </footer>
 
@@ -1088,6 +988,14 @@ function filterPubs(category, btn) {
       card.style.display = 'none';
     }
   });
+}
+
+function toggleLanguage() {
+  const htmlEl = document.documentElement;
+  const currentLang = htmlEl.getAttribute('data-lang');
+  const newLang = currentLang === 'zh' ? 'en' : 'zh';
+  htmlEl.setAttribute('data-lang', newLang);
+  document.getElementById('langToggleBtn').textContent = newLang === 'zh' ? 'EN' : '中文';
 }
 </script>
 
